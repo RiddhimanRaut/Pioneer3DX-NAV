@@ -1,6 +1,6 @@
 # Pioneer3DX-NAV
-Creator: Riddhiman Raut
-Jadavpur University
+Creator: Riddhiman Raut, Jadavpur University
+Created at IIT Jodhpur
 
 
 First attempt at creating a working navigation stack on a pioneer 3dx robot. Developers are welcome to improve upon it.
