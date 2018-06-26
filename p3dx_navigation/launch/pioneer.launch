@@ -1,0 +1,19 @@
+<launch>
+
+<!-- Starting rosaria driver for motors and encoders -->
+  <node name="rosaria" pkg="rosaria" type="RosAria" args="_port:=/dev/ttyUSB0">
+  <remap from="rosaria/cmd_vel" to="cmd_vel"/>
+  <remap from="rosaria/pose" to="odom"/>
+  </node>
+
+<!-- Starting laser rosrun sicktoolbox_wrapper sicklms -->
+  <node name="sicktoolbox_wrapper" pkg="sicktoolbox_wrapper" type="sicklms">
+  <param name ="port" value="/dev/ttyUSB1"/>
+  <param name ="scan_rate" value="30"/>
+  </node>  
+  
+<!-- Starting laser tf -->
+ <node name="RosAriaLaserTf" pkg="p3dx_navigation" type="RosAriaLaserTf.py" /> 
+
+<!-- <node name="static_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /base_link /laser 100" />-->
+</launch>

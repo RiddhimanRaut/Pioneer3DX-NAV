@@ -1,0 +1,21 @@
+
+<launch>
+
+   <!-- Run the map server -->
+   <node name="map_server" pkg="map_server" type="map_server" args="$(find p3dx_navigation)/maps/wgmap.yaml" output="screen"/>
+  
+   <!--- Run AMCL -->
+   <include file="$(find p3dx_navigation)/launch/amcl_diff_gazebo.launch" />
+
+   <!--<node name="amcl" pkg="amcl" type="amcl" output="screen"/>-->
+  
+   <!--- Run move_base with parameters -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find p3dx_navigation)/config/p3dx_gazebo/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find p3dx_navigation)/config/p3dx_gazebo/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find p3dx_navigation)/config/p3dx_gazebo/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find p3dx_navigation)/config/p3dx_gazebo/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find p3dx_navigation)/config/p3dx_gazebo/move_base_params.yaml" command="load" />
+  </node>
+
+</launch>

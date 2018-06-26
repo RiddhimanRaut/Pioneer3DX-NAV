@@ -1,0 +1,9 @@
+<launch>
+
+    <!--Run joy-->
+    <node pkg="joy" name="joy_node" type="joy_node" />
+
+    <!--Run Controles-->
+    <node pkg="p3dx_navigation" name="p3dxJoyTeleop" type="p3dxJoyTeleop.py" />
+	
+</launch>

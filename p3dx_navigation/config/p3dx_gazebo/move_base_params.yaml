@@ -1,0 +1,22 @@
+controller_frequency: 10 #The rate in Hz at which to run the control loop and send velocity commands to the base
+
+TrajectoryPlannerROS:
+
+  pdist_scale: 0.9 #The weighting for how much the controller should stay close to the path it was given 
+
+  max_vel_x: 0.2 # The maximum forward velocity allowed for the base in meters/sec
+  min_vel_x: 0.05 # The minimum forward velocity allowed for the base in meters/sec. 
+  max_vel_theta: 0.8 #The maximum rotational velocity allowed for the base in radians/sec 
+  min_vel_theta: -0.8 #The minimum rotational velocity allowed for the base in radians/sec 
+  min_in_place_vel_theta: 0.01 # The minimum rotational velocity allowed for the base while performing in-place rotations in radians/sec
+
+ 
+  acc_lim_theta: 2.0 #The rotational acceleration limit of the robot in radians/sec^2
+  acc_lim_x: 2.0 #The x acceleration limit of the robot in meters/sec^2 
+
+  meter_scoring: true #Whether the gdist_scale and pdist_scale parameters should assume that goal_distance and path_distance are expressed in units of meters or cells.
+
+  holonomic_robot: false #Determines whether velocity commands are generated for a holonomic or non-holonomic robot.
+
+
+#More information at http://wiki.ros.org/base_local_planner
